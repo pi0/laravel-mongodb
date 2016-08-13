@@ -116,11 +116,11 @@ And add a new mongodb connection:
     'driver'   => 'mongodb',
     'host'     => env('DB_HOST', 'localhost'),
     'port'     => env('DB_PORT', 27017),
-    'database' => env('DB_DATABASE', ''),
-    'username' => env('DB_USERNAME', ''),
-    'password' => env('DB_PASSWORD', ''),
+    'database' => env('DB_DATABASE'),
+    'username' => env('DB_USERNAME'),
+    'password' => env('DB_PASSWORD'),
     'options' => [
-        'db' => 'admin' // sets the authentication database required by mongo 3
+        'database' => 'admin' // sets the authentication database required by mongo 3
     ]
 ],
 ```
@@ -132,9 +132,9 @@ You can connect to multiple servers or replica sets with the following configura
     'driver'   => 'mongodb',
     'host'     => ['server1', 'server2'],
     'port'     => env('DB_PORT', 27017),
-    'database' => env('DB_DATABASE', ''),
-    'username' => env('DB_USERNAME', ''),
-    'password' => env('DB_PASSWORD', ''),
+    'database' => env('DB_DATABASE'),
+    'username' => env('DB_USERNAME'),
+    'password' => env('DB_PASSWORD'),
     'options'  => ['replicaSet' => 'replicaSetName']
 ],
 ```
@@ -620,7 +620,7 @@ class User extends Eloquent {
 
     public function groups()
     {
-        return $this->belongsToMany('Group', null, 'users', 'groups');
+        return $this->belongsToMany('Group', null, 'user_ids', 'group_ids');
     }
 
 }
@@ -804,7 +804,7 @@ class Message extends Eloquent {
 These expressions will be injected directly into the query.
 
 ```php
-User::whereRaw(['age' => array('$gt' => 30, '$lt' => 40]))->get();
+User::whereRaw(['age' => array('$gt' => 30, '$lt' => 40)])->get();
 ```
 
 You can also perform raw expressions on the internal MongoCollection object. If this is executed on the model class, it will return a collection of models. If this is executed on the query builder, it will return the original response.
