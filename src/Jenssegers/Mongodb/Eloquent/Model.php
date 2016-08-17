@@ -525,6 +525,18 @@ abstract class Model extends BaseModel
     }
 
     /**
+    * Remove the table name from a given key.
+    * We just return key here to support dot notation keys
+    *
+    * @param  string  $key
+    * @return string
+    */
+    protected function removeTableFromKey($key)
+    {
+        return $key;
+    }
+
+    /**
      * Handle dynamic method calls into the method.
      *
      * @param  string  $method
