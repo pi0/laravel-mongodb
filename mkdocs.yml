@@ -1,0 +1,19 @@
+site_name: Laravel MongoDB
+repo_url: https://github.com/jenssegers/laravel-mongodb
+theme_dir: theme
+markdown_extensions:
+    - toc:
+        permalink: "#"
+    - admonition:
+
+pages:
+
+- Master:
+  - Home: master/index.md
+  - Installation: master/installation.md
+  - Configuration: master/configuration.md
+  - Eloquent: master/eloquent.md
+  - Query Builder: master/builder.md
+  - Schema: master/schema.md
+  - Extensions: master/extensions.md
+  - Usage: master/usage.md
